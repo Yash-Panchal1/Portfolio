@@ -13,17 +13,18 @@ export const sendNotificationEmail = async ({ name, email, subject, message }) =
     return;
   }
 
-  // Resolve IPv4 address directly or use family 4
+  // Bulletproof transport for cloud servers (Render/Linux)
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // TLS via port 587 (universal on cloud providers)
     auth: {
       user: emailUser,
       pass: emailPass,
     },
-    // Prevent IPv6 ENETUNREACH on Windows
-    tls: {
-      rejectUnauthorized: false
-    }
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 
   const mailOptions = {
