@@ -1,0 +1,285 @@
+/* ===================== LOGIN SCREEN ===================== */
+.login-screen {
+  width: 100vw;
+  height: 100vh;
+  /* XP blue gradient with subtle grid texture */
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0,0,80,0.07) 3px,
+      rgba(0,0,80,0.07) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(0,0,80,0.07) 3px,
+      rgba(0,0,80,0.07) 4px
+    ),
+    linear-gradient(180deg, #2f6fd4 0%, #3a7fe0 40%, #3875d8 60%, #2860c4 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Tahoma', Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* ── Top & Bottom bright blue bars ── */
+.login-screen::before,
+.login-screen::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 52px;
+  z-index: 1;
+}
+.login-screen::before {
+  top: 0;
+  background: linear-gradient(to bottom, #4a90e8 0%, #3070d0 100%);
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+}
+.login-screen::after {
+  bottom: 0;
+  background: linear-gradient(to top, #4a90e8 0%, #3070d0 100%);
+  border-top: 2px solid rgba(255,255,255,0.3);
+}
+
+/* ── Main panel (the centered row) ── */
+.login-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  padding: 48px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── LEFT COLUMN ── */
+.login-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-right: 60px;
+  min-width: 280px;
+}
+
+/* Windows logo image */
+.login-win-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  margin-bottom: 2px;
+}
+
+/* Microsoft® logo block */
+.ms-logo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.ms-micro {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.5px;
+}
+.ms-micro sup { font-size: 0.45rem; vertical-align: super; }
+
+.ms-windows-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ms-windows-text {
+  font-size: 1.9rem;
+  color: #fff;
+  font-style: italic;
+  font-weight: 300;
+  font-family: 'Times New Roman', serif;
+  letter-spacing: 0.5px;
+}
+
+.ms-xp {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: bold;
+  color: #ff7700;
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+/* Name */
+.login-left-name {
+  font-size: 1.55rem;
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Tahoma', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.heart {
+  color: #ff4466;
+  font-size: 1rem;
+  margin-left: 2px;
+}
+
+.login-left-role {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.8);
+  margin-top: -6px;
+}
+
+.login-left-hint {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* ── VERTICAL DIVIDER ── */
+.login-divider {
+  width: 1px;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4), transparent);
+  flex-shrink: 0;
+  margin: 0 60px;
+}
+
+/* ── RIGHT: User card button ── */
+.login-user-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+  text-align: left;
+}
+
+.login-user-card:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.4);
+  transform: scale(1.02);
+}
+
+/* YK avatar box */
+.login-avatar {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #5bbfe8, #2a90cc);
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: 'Tahoma', Arial, sans-serif;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.login-avatar .avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.login-user-name {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.login-user-role {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.75rem;
+}
+
+.login-user-hint {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.7rem;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ── Center bottom text ── */
+.login-center-text {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.65);
+  font-size: 0.75rem;
+  font-style: italic;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* ── Bottom bar ── */
+.login-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  background: linear-gradient(to bottom, #4a90e8 0%, #3878d8 100%);
+  border-top: 2px solid rgba(255,255,255,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 2;
+}
+
+.restart-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.82rem;
+  cursor: pointer;
+  opacity: 0.85;
+  font-family: 'Tahoma', Arial, sans-serif;
+  transition: opacity 0.2s;
+}
+.restart-btn:hover { opacity: 1; }
+
+.restart-icon {
+  font-size: 1.1rem;
+  background: #2a7a3a;
+  border-radius: 3px;
+  padding: 2px 5px;
+}
+
+.login-tagline {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.72rem;
+  text-align: right;
+  line-height: 1.6;
+}

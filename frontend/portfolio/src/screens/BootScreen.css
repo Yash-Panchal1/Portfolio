@@ -1,0 +1,130 @@
+/* ===================== BOOT SCREEN ===================== */
+.boot-screen {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.boot-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Flag image — screen blend mode removes black background */
+.boot-flag {
+  width: 110px;
+  height: 110px;
+  mix-blend-mode: screen;
+  object-fit: contain;
+}
+
+/* Title */
+.boot-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.boot-name {
+  font-family: 'Times New Roman', 'Georgia', serif;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.xp-badge {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: bold;
+  color: #ff7700;
+  vertical-align: super;
+  margin-left: 2px;
+  letter-spacing: 0;
+}
+
+.boot-sub {
+  color: #ccc;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  font-family: 'Tahoma', Arial, sans-serif;
+}
+
+/* XP Progress Bar */
+.boot-progress-wrap {
+  width: 220px;
+}
+
+.boot-progress-track {
+  border: 1px solid #555;
+  height: 24px;
+  border-radius: 2px;
+  background: #111;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Three dots that slide across */
+.boot-dots-runner {
+  display: flex;
+  gap: 4px;
+  position: absolute;
+  left: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: dots-slide 1.6s linear infinite;
+}
+
+.bdot {
+  width: 22px;
+  height: 16px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, #6ab0ff 0%, #1a5fc8 50%, #0d3ea0 100%);
+  box-shadow: 0 0 4px rgba(100, 160, 255, 0.6);
+}
+
+@keyframes dots-slide {
+  0%   { transform: translateY(-50%) translateX(0px); }
+  100% { transform: translateY(-50%) translateX(300px); }
+}
+
+/* Bottom corners */
+.boot-bottom-left {
+  position: absolute;
+  bottom: 32px;
+  left: 40px;
+  color: #666;
+  font-size: 0.72rem;
+  font-family: 'Tahoma', Arial, sans-serif;
+  line-height: 1.7;
+}
+
+.boot-bottom-right {
+  position: absolute;
+  bottom: 28px;
+  right: 40px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: bold;
+  font-family: 'Times New Roman', serif;
+  letter-spacing: 0.5px;
+}
+
+.boot-bottom-right sup {
+  font-size: 0.55rem;
+  vertical-align: super;
+  font-weight: normal;
+}

@@ -1,0 +1,243 @@
+/* ===================== START MENU ===================== */
+.start-menu {
+  position: fixed;
+  bottom: 36px;
+  left: 0;
+  width: 380px;
+  background: #fff;
+  border: 2px solid #1a40a0;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 4px 4px 16px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.15);
+  z-index: 20000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: start-open 0.12s ease-out;
+  font-family: 'Tahoma', Arial, sans-serif;
+}
+
+@keyframes start-open {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header ── */
+.start-header {
+  background: linear-gradient(to right, #1a5fc8, #3a88e8, #1a5fc8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+}
+
+.start-avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #5bbfe8, #2a90cc);
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #fff;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.start-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.start-username {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+/* ── Body: two columns ── */
+.start-body {
+  display: flex;
+  flex: 1;
+}
+
+/* LEFT column */
+.start-left {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+  border-right: 1px solid #d5dfe8;
+}
+
+.start-pinned {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Tahoma', Arial, sans-serif;
+  text-align: left;
+  transition: background 0.1s;
+  width: 100%;
+}
+
+.start-item:hover {
+  background: #316AC5;
+}
+
+.start-item:hover .si-name,
+.start-item:hover .si-desc {
+  color: #fff;
+}
+
+.si-icon {
+  font-size: 1.6rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.si-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.si-name {
+  font-size: 0.8rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.si-desc {
+  font-size: 0.68rem;
+  color: #666;
+}
+
+/* Separator */
+.start-sep {
+  height: 1px;
+  background: #d5dfe8;
+  margin: 4px 12px;
+}
+
+/* All Programs */
+.start-item.all-programs {
+  margin-top: auto;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border-top: 1px solid #d5dfe8;
+}
+
+.si-arrow {
+  font-size: 0.55rem;
+  color: #316AC5;
+}
+
+/* RIGHT column */
+.start-right {
+  width: 160px;
+  background: linear-gradient(to bottom, #d3e5f8, #b8d4f0);
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+}
+
+.start-item-r {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 0.78rem;
+  color: #000;
+  text-align: left;
+  transition: background 0.1s;
+  font-weight: bold;
+  width: 100%;
+}
+
+.start-item-r:hover {
+  background: #316AC5;
+  color: #fff;
+}
+
+.si-icon-r {
+  font-size: 1.1rem;
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.si-arrow-r {
+  font-size: 0.5rem;
+  margin-left: auto;
+}
+
+.start-sep-r {
+  height: 1px;
+  background: rgba(0,0,0,0.12);
+  margin: 4px 10px;
+}
+
+/* ── Footer ── */
+.start-footer {
+  background: linear-gradient(to right, #2a5aa7, #3a7fe8, #2a5aa7);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 6px 12px;
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+.start-foot-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.78rem;
+  font-family: 'Tahoma', Arial, sans-serif;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+
+.start-foot-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.foot-svg {
+  flex-shrink: 0;
+}
+
+/* ── Overlay to close when clicking outside ── */
+.start-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 19999;
+}

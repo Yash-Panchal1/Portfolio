@@ -1,0 +1,120 @@
+/* ===================== LOG OFF DIALOG ===================== */
+.logoff-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 30000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: logoff-dim 0.3s ease;
+}
+
+@keyframes logoff-dim {
+  from { background: rgba(0,0,0,0); }
+  to   { background: rgba(0,0,0,0.65); }
+}
+
+.logoff-dialog {
+  width: 340px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  animation: logoff-pop 0.2s ease;
+}
+
+@keyframes logoff-pop {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Header */
+.logoff-header {
+  background: linear-gradient(to bottom, #3a7fe8 0%, #2260cc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+}
+
+.logoff-title {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: bold;
+  font-family: 'Tahoma', Arial, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.logoff-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+
+/* Buttons row */
+.logoff-buttons {
+  background: linear-gradient(to bottom, #b8d4f0 0%, #8ab8e8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 28px 20px;
+}
+
+.logoff-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: 'Tahoma', Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #1a3a7a;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.logoff-btn:hover {
+  background: rgba(255,255,255,0.4);
+  border-color: rgba(50,100,200,0.5);
+}
+
+.logoff-btn:active {
+  background: rgba(255,255,255,0.6);
+}
+
+/* Footer with Cancel */
+.logoff-footer {
+  background: linear-gradient(to bottom, #8ab8e8 0%, #6a9cd8 100%);
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 16px;
+  border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+.logoff-cancel {
+  background: linear-gradient(to bottom, #f0f0f0, #d8d8d8);
+  border: 1px solid #888;
+  border-radius: 3px;
+  padding: 4px 20px;
+  font-size: 0.78rem;
+  font-family: 'Tahoma', Arial, sans-serif;
+  cursor: pointer;
+  color: #000;
+  transition: background 0.1s;
+}
+
+.logoff-cancel:hover {
+  background: linear-gradient(to bottom, #e8e8e8, #ccc);
+}
+
+/* Grayscale desktop when logoff dialog is open */
+.desktop.dimmed {
+  filter: grayscale(1) brightness(0.5);
+  pointer-events: none;
+}
