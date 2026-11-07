@@ -16,9 +16,9 @@ export default function BootScreen({ onDone }) {
     >
       <div className="boot-center">
 
-        {/* Windows logo — mix-blend-mode:screen removes the black background */}
+        {/* Windows logo with transparent background */}
         <img
-          src="/assets/icons/windows-logo.jpg"
+          src="/assets/icons/windows-logo-transparent.png"
           alt="Windows Logo"
           className="boot-flag"
         />

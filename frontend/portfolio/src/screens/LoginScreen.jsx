@@ -9,9 +9,9 @@ export default function LoginScreen({ onLogin }) {
 
         {/* LEFT COLUMN */}
         <div className="login-left">
-          {/* Glossy Windows logo — screen blend removes black bg */}
+          {/* Authentic Windows XP Logo with transparent background */}
           <img
-            src="/assets/icons/windows-logo.jpg"
+            src="/assets/icons/windows-logo-transparent.png"
             alt="Windows Logo"
             className="login-win-logo"
           />

@@ -72,11 +72,11 @@
 
 /* Windows logo image */
 .login-win-logo {
-  width: 60px;
-  height: 60px;
+  width: 82px;
+  height: 82px;
   object-fit: contain;
-  mix-blend-mode: screen;
-  margin-bottom: 2px;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4));
+  margin-bottom: 4px;
 }
 
 /* Microsoft® logo block */
@@ -303,6 +303,11 @@
     align-items: center;
     text-align: center;
     padding-right: 0;
+  }
+
+  .login-win-logo {
+    width: 68px;
+    height: 68px;
   }
 
   .login-left-name {

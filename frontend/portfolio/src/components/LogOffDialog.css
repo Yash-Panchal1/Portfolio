@@ -46,10 +46,10 @@
 }
 
 .logoff-logo {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
-  mix-blend-mode: screen;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.35));
 }
 
 /* Buttons row */

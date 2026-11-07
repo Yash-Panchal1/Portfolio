@@ -8,7 +8,7 @@ export default function LogOffDialog({ onLogOff, onRestart, onCancel }) {
         <div className="logoff-header">
           <span className="logoff-title">Log Off Yash Panchal XP</span>
           <img
-            src="/assets/icons/windows-logo.jpg"
+            src="/assets/icons/windows-logo-transparent.png"
             alt="Windows"
             className="logoff-logo"
           />

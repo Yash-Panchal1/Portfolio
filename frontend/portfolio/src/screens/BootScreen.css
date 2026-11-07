@@ -17,11 +17,10 @@
   gap: 28px;
 }
 
-/* Flag image — screen blend mode removes black background */
+/* Flag image */
 .boot-flag {
   width: 110px;
   height: 110px;
-  mix-blend-mode: screen;
   object-fit: contain;
 }
 
