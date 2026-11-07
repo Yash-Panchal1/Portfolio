@@ -2,8 +2,7 @@
 
 A full-stack, responsive, interactive portfolio website inspired by the iconic **Windows XP** operating system. Built with modern web technologies, authentic retro aesthetics, full touch/mobile responsiveness, and deployed to cloud infrastructure.
 
-🌐 **Live Demo:** [https://yash-xp.vercel.app](https://yash-xp.vercel.app)  
-⚙️ **Backend API:** [https://portfolio-7isj.onrender.com](https://portfolio-7isj.onrender.com)
+🌐 **Live Demo:** [https://yash-xp.vercel.app](https://yash-xp.vercel.app)
 
 ---
 
