@@ -3,7 +3,7 @@ import './BootScreen.css'
 
 export default function BootScreen({ onDone }) {
   useEffect(() => {
-    const timer = setTimeout(onDone, 2000)
+    const timer = setTimeout(onDone, 3800)
     return () => clearTimeout(timer)
   }, [onDone])
 

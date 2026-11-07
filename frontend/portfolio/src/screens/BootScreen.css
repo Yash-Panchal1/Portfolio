@@ -84,7 +84,7 @@
   left: -80px;
   top: 50%;
   transform: translateY(-50%);
-  animation: dots-slide 1.6s linear infinite;
+  animation: dots-slide 2.5s linear infinite;
 }
 
 .bdot {
