@@ -35,7 +35,7 @@ export default function AboutWindow(props) {
             new opportunities to build impactful projects.
           </p>
           <div className="about-skills">
-            {['HTML', 'CSS', 'JavaScript', 'React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'WebSockets'].map(s => (
+            {['HTML', 'CSS', 'JavaScript', 'React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Postman', 'WebSockets'].map(s => (
               <span key={s} className="skill-tag">{s}</span>
             ))}
           </div>
