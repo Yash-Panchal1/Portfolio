@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import dns from 'dns';
 
-// Force DNS lookup to always resolve IPv4 addresses
+// Ensure IPv4 lookup precedence
 dns.setDefaultResultOrder?.('ipv4first');
 
 export const sendNotificationEmail = async ({ name, email, subject, message }) => {
@@ -9,22 +9,22 @@ export const sendNotificationEmail = async ({ name, email, subject, message }) =
   const emailPass = process.env.EMAIL_PASS;
 
   if (!emailUser || !emailPass) {
-    console.warn('⚠️ EMAIL_USER or EMAIL_PASS not set in .env. Email notification skipped.');
+    console.warn('⚠️ EMAIL_USER or EMAIL_PASS not set in environment.');
     return;
   }
 
-  // Bulletproof transport for cloud servers (Render/Linux)
+  // Reliable SSL transport across both Windows and Linux hosting
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // TLS via port 587 (universal on cloud providers)
+    port: 465,
+    secure: true,
     auth: {
       user: emailUser,
       pass: emailPass,
     },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 15000,
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 
   const mailOptions = {
@@ -68,5 +68,7 @@ export const sendNotificationEmail = async ({ name, email, subject, message }) =
     `,
   };
 
-  await transporter.sendMail(mailOptions);
+  const info = await transporter.sendMail(mailOptions);
+  console.log('✅ Email delivered successfully. MessageId:', info.messageId);
+  return info;
 };

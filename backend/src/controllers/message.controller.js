@@ -15,13 +15,17 @@ export const sendMessage = asyncHandler(async (req, res) => {
   // 1. Save to MongoDB
   await Message.create({ name, email, subject, message });
 
-  // 2. Respond immediately to user so frontend never gets stuck or times out!
-  res.status(201).json(new ApiResponse(201, {}, 'Message sent. Thanks for reaching out!'));
+  // 2. Send email notification and wait for confirmation so delivery is guaranteed
+  try {
+    await sendNotificationEmail({ name, email, subject, message });
+    console.log(`[Contact] Notification email sent for message from ${email}`);
+  } catch (err) {
+    console.error('❌ Error sending notification email:', err.message);
+  }
 
-  // 3. Send email asynchronously in the background
-  sendNotificationEmail({ name, email, subject, message }).catch(err => {
-    console.error('❌ Background email sending error:', err.message);
-  });
+  return res
+    .status(201)
+    .json(new ApiResponse(201, {}, 'Message sent. Thanks for reaching out!'));
 });
 
 // GET /api/contact  (admin)
