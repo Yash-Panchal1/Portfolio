@@ -67,8 +67,6 @@ export default function PinballWindow(props) {
         {/* Authentic Windows XP Pinball Menu Bar */}
         <div className="pinball-menubar">
           <span className="pm-item" onClick={handleRestart}>New Game (F2)</span>
-          <span className="pm-item" onClick={focusGame}>Options</span>
-          <span className="pm-item" onClick={focusGame}>Help</span>
           <div className="pm-status" onClick={focusGame}>
             {isFocused ? '🟢 Sound & Controls Active' : '🔊 Click to Enable Sound'}
           </div>
