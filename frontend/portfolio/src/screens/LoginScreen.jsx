@@ -4,6 +4,9 @@ export default function LoginScreen({ onLogin }) {
   return (
     <div className="login-screen">
 
+      {/* ── Top Blue Bar ── */}
+      <div className="login-top-bar"></div>
+
       {/* ── Main panel ── */}
       <div className="login-panel">
 
@@ -16,12 +19,12 @@ export default function LoginScreen({ onLogin }) {
             className="login-win-logo"
           />
 
-          {/* Name */}
+          {/* Name & XP Badge */}
           <div className="login-left-name">
-            Yash Panchal<span className="heart">♥</span>
+            Yash Panchal<span className="xp-badge">xp</span>
           </div>
           <div className="login-left-role">MERN Stack Developer</div>
-          <div className="login-left-hint">To begin, click on Yash Panchal to explore.</div>
+          <div className="login-left-hint">To begin, click on Yash Panchal to log in</div>
         </div>
 
         {/* VERTICAL DIVIDER */}
@@ -58,7 +61,7 @@ export default function LoginScreen({ onLogin }) {
         </button>
         <p className="login-tagline">
           After you log on, the system's yours to explore.<br />
-          Projects, skills, and more await.
+          Every detail has been designed with a purpose.
         </p>
       </div>
 

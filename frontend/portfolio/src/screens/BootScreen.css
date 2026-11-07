@@ -14,14 +14,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
 }
 
-/* Flag image */
+/* Flag image — larger & authentic */
 .boot-flag {
-  width: 110px;
-  height: 110px;
+  width: 175px;
+  height: 175px;
   object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
 }
 
 /* Title */
@@ -29,50 +30,58 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   line-height: 1;
 }
 
-.boot-name {
-  font-family: 'Times New Roman', 'Georgia', serif;
-  font-size: 3rem;
-  font-style: italic;
-  font-weight: 400;
-  color: #fff;
-  letter-spacing: 1px;
-  position: relative;
+.boot-name-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
-.xp-badge {
-  font-family: 'Arial', sans-serif;
-  font-size: 1.1rem;
-  font-style: normal;
-  font-weight: bold;
-  color: #ff7700;
-  vertical-align: super;
-  margin-left: 2px;
-  letter-spacing: 0;
+.boot-name {
+  font-family: 'Segoe UI', system-ui, -apple-system, 'Trebuchet MS', sans-serif;
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.boot-xp {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.85rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #e84814;
+  margin-left: 6px;
+  line-height: 1;
 }
 
 .boot-sub {
-  color: #ccc;
-  font-size: 0.9rem;
+  color: #fff;
+  font-size: 1.15rem;
+  font-style: italic;
   letter-spacing: 0.5px;
-  font-family: 'Tahoma', Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+  margin-top: 2px;
 }
 
 /* XP Progress Bar */
 .boot-progress-wrap {
-  width: 220px;
+  width: 215px;
+  margin-top: 8px;
 }
 
 .boot-progress-track {
-  border: 1px solid #555;
-  height: 24px;
-  border-radius: 2px;
-  background: #111;
+  border: 2px solid #555;
+  height: 22px;
+  border-radius: 8px;
+  background: #000;
   overflow: hidden;
   position: relative;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Three dots that slide across */
@@ -80,18 +89,18 @@
   display: flex;
   gap: 4px;
   position: absolute;
-  left: -80px;
+  left: -75px;
   top: 50%;
   transform: translateY(-50%);
   animation: dots-slide 2.5s linear infinite;
 }
 
 .bdot {
-  width: 22px;
-  height: 16px;
+  width: 18px;
+  height: 14px;
   border-radius: 2px;
   background: linear-gradient(to bottom, #6ab0ff 0%, #1a5fc8 50%, #0d3ea0 100%);
-  box-shadow: 0 0 4px rgba(100, 160, 255, 0.6);
+  box-shadow: 0 0 5px rgba(100, 160, 255, 0.7);
 }
 
 @keyframes dots-slide {
@@ -102,23 +111,23 @@
 /* Bottom corners */
 .boot-bottom-left {
   position: absolute;
-  bottom: 32px;
-  left: 40px;
-  color: #666;
-  font-size: 0.72rem;
-  font-family: 'Tahoma', Arial, sans-serif;
-  line-height: 1.7;
+  bottom: 34px;
+  left: 44px;
+  color: #777;
+  font-size: 0.8rem;
+  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+  line-height: 1.6;
 }
 
 .boot-bottom-right {
   position: absolute;
   bottom: 28px;
-  right: 40px;
+  right: 44px;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-style: italic;
   font-weight: bold;
-  font-family: 'Times New Roman', serif;
+  font-family: 'Times New Roman', Georgia, serif;
   letter-spacing: 0.5px;
 }
 

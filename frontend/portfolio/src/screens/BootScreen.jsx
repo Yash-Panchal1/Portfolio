@@ -16,7 +16,7 @@ export default function BootScreen({ onDone }) {
     >
       <div className="boot-center">
 
-        {/* Windows logo with transparent background */}
+        {/* Windows logo with transparent background - larger */}
         <img
           src="/assets/icons/windows-logo-transparent.png"
           alt="Windows Logo"
@@ -25,7 +25,10 @@ export default function BootScreen({ onDone }) {
 
         {/* Title */}
         <div className="boot-title">
-          <span className="boot-name">Yash<span className="xp-badge">XP</span></span>
+          <div className="boot-name-row">
+            <span className="boot-name">Yash</span>
+            <span className="boot-xp">xp</span>
+          </div>
           <span className="boot-sub">MERN Stack Developer</span>
         </div>
 
