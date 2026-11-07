@@ -35,7 +35,8 @@ export default function ContactWindow(props) {
     }
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:8000'}/api/contact`, {
+      const apiBase = (import.meta.env.VITE_API_BASE || 'https://portfolio-7isj.onrender.com').replace(/\/+$/, '')
+      const res = await fetch(`${apiBase}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submission),
