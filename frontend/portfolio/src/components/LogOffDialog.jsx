@@ -26,7 +26,7 @@ export default function LogOffDialog({ onLogOff, onRestart, onCancel }) {
             />
             <span>Restart</span>
           </button>
-          <button className="logoff-btn" onClick={onLogOff}>
+          <button className="logoff-btn" data-logoff="true" onClick={onLogOff}>
             <img
               src="/assets/icons/logoff-key.png"
               alt="Log Off"

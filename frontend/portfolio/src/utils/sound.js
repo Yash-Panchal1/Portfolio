@@ -23,3 +23,13 @@ export function playClick() {
     // ignore playback restrictions
   }
 }
+
+export function playLogoff() {
+  try {
+    const audio = new Audio('/assets/audio/logoff.mp3')
+    audio.volume = 0.6
+    audio.play().catch(() => {})
+  } catch {
+    // ignore playback restrictions
+  }
+}
