@@ -47,3 +47,17 @@
   font-family: 'Tahoma', Arial, sans-serif;
   letter-spacing: 0.2px;
 }
+
+@media (max-width: 768px) {
+  .desktop-icon {
+    width: 84px;
+    padding: 6px 4px;
+  }
+  .icon-img {
+    width: 52px;
+    height: 52px;
+  }
+  .icon-label {
+    font-size: 0.78rem;
+  }
+}

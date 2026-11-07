@@ -177,3 +177,28 @@
   overflow-y: auto;
   padding: 0;
 }
+
+/* ===================== MOBILE RESPONSIVENESS ===================== */
+@media (max-width: 768px) {
+  .xp-window {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 36px) !important;
+    min-width: 100vw !important;
+    border-radius: 0 !important;
+  }
+
+  .xp-titlebar {
+    padding: 6px 8px;
+  }
+
+  .xp-title-text {
+    font-size: 0.85rem;
+  }
+
+  .xp-menubar span {
+    padding: 4px 8px;
+    font-size: 0.72rem;
+  }
+}

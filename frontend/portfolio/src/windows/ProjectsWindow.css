@@ -417,3 +417,31 @@
   background: rgba(100,160,255,0.2);
   color: #fff !important;
 }
+
+@media (max-width: 768px) {
+  .proj-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .proj-sidebar {
+    display: none;
+  }
+
+  .proj-address-bar {
+    padding: 2px 6px;
+  }
+
+  .proj-detail-info {
+    padding: 14px 16px;
+  }
+
+  .proj-detail-title {
+    font-size: 1.1rem;
+  }
+
+  .proj-detail-thumb {
+    aspect-ratio: 16 / 9;
+  }
+}

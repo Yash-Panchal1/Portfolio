@@ -216,3 +216,16 @@
   color: #444;
   height: 22px;
 }
+
+@media (max-width: 600px) {
+  .oe-label {
+    width: 48px;
+    font-size: 0.7rem;
+  }
+  .oe-tb-btn span:not(:first-child) {
+    display: none;
+  }
+  .oe-tb-btn {
+    padding: 4px 6px;
+  }
+}

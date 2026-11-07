@@ -283,3 +283,49 @@
   text-align: right;
   line-height: 1.6;
 }
+
+/* ===================== MOBILE RESPONSIVENESS ===================== */
+@media (max-width: 768px) {
+  .login-panel {
+    flex-direction: column;
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .login-divider {
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+    margin: 4px 0;
+  }
+
+  .login-left {
+    align-items: center;
+    text-align: center;
+    padding-right: 0;
+  }
+
+  .login-left-name {
+    font-size: 1.3rem;
+  }
+
+  .login-user-card {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+
+  .login-center-text {
+    display: none;
+  }
+
+  .login-tagline {
+    display: none;
+  }
+
+  .login-bottom-bar {
+    justify-content: center;
+    height: 46px;
+  }
+}

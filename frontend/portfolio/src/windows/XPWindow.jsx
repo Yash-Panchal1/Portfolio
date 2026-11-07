@@ -10,7 +10,8 @@ export default function XPWindow({
   hideMenuBar = false
 }) {
   const [pos, setPos] = useState(defaultPos)
-  const [maximized, setMaximized] = useState(false)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+  const [maximized, setMaximized] = useState(isMobile)
   const [showViewMenu, setShowViewMenu] = useState(false)
   const preMax = useRef({ pos: defaultPos, size: defaultSize })
   const viewMenuRef = useRef(null)

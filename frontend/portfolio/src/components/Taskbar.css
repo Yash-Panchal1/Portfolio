@@ -88,3 +88,21 @@
   color: #fff;
   font-size: 0.75rem;
 }
+
+@media (max-width: 768px) {
+  .taskbar-btn {
+    min-width: 40px;
+    max-width: 90px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+  }
+
+  .start-btn {
+    padding: 0 10px 0 8px;
+    font-size: 0.8rem;
+  }
+
+  .taskbar-clock {
+    padding: 0 8px;
+  }
+}

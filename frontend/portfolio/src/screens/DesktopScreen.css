@@ -65,3 +65,31 @@
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ===================== MOBILE RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .desktop-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 14px 10px;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .xp-notif {
+    width: calc(100vw - 24px);
+    right: 12px;
+    left: 12px;
+    bottom: 46px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .desktop-icons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
