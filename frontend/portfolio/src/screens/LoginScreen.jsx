@@ -18,10 +18,10 @@ export default function LoginScreen({ onLogin }) {
 
           {/* Name */}
           <div className="login-left-name">
-            Yash Kumar<span className="heart">♥</span>
+            Yash Panchal<span className="heart">♥</span>
           </div>
           <div className="login-left-role">MERN Stack Developer</div>
-          <div className="login-left-hint">To begin, click on Yash Kumar to explore.</div>
+          <div className="login-left-hint">To begin, click on Yash Panchal to explore.</div>
         </div>
 
         {/* VERTICAL DIVIDER */}
@@ -30,10 +30,10 @@ export default function LoginScreen({ onLogin }) {
         {/* RIGHT COLUMN */}
         <button className="login-user-card" onClick={onLogin}>
           <div className="login-avatar">
-            <img src="/assets/avatar/yash-avatar.png" alt="Yash" className="avatar-img" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentNode.innerText = 'YK'; }} />
+            <img src="/assets/avatar/yash-avatar.png" alt="Yash" className="avatar-img" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentNode.innerText = 'YP'; }} />
           </div>
           <div className="login-user-info">
-            <span className="login-user-name">Yash Kumar</span>
+            <span className="login-user-name">Yash Panchal</span>
             <span className="login-user-role">MERN Stack Developer</span>
             <span className="login-user-hint">Click your profile to enter</span>
           </div>

@@ -14,11 +14,11 @@ export default function ResumeWindow(props) {
           <div className="resume-pdf-icon">
             <img src="/assets/icons/my-resume.webp" alt="PDF" width="56" height="56" style={{ objectFit: 'contain' }} />
           </div>
-          <h2>Yash_Kumar_Resume.pdf</h2>
+          <h2>Yash_Panchal_Resume.pdf</h2>
           <p>Click below to view or download my resume</p>
           <a
             className="resume-download"
-            href="/assets/resume/Yash_Kumar_Resume.pdf"
+            href="/assets/resume/Yash_Panchal_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
