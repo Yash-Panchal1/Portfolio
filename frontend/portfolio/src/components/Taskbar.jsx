@@ -19,12 +19,11 @@ export default function Taskbar({ openWindows, icons, activeWindow, minimized, o
     <div className="taskbar">
       {/* Start button */}
       <button className={`start-btn ${startOpen ? 'pressed' : ''}`} onClick={onStartClick}>
-        <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-          <path d="M0 12.5 L40 7 L40 42 L0 42 Z" fill="#F25022"/>
-          <path d="M44 6.5 L88 0 L88 42 L44 42 Z" fill="#7FBA00"/>
-          <path d="M0 46 L40 46 L40 81 L0 75.5 Z" fill="#00A4EF"/>
-          <path d="M44 46 L88 46 L88 88 L44 81.5 Z" fill="#FFB900"/>
-        </svg>
+        <img
+          src="/assets/icons/windows-logo-transparent.png"
+          alt="Windows Logo"
+          className="start-win-logo"
+        />
         <span>start</span>
       </button>
 
