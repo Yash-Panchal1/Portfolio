@@ -2,6 +2,25 @@ import { useState, useEffect } from 'react'
 import { playShutdown, playClick } from '../utils/sound'
 import './ShutdownScreen.css'
 
+function PowerIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="sd-power-svg"
+    >
+      <path d="M18.36 6.64a9 9 0 1 1-12.73 0" />
+      <line x1="12" y1="2" x2="12" y2="12" />
+    </svg>
+  )
+}
+
 export default function ShutdownScreen({ onPowerOn }) {
   const [phase, setPhase] = useState('shutting-down') // 'shutting-down' | 'off'
 
@@ -25,16 +44,17 @@ export default function ShutdownScreen({ onPowerOn }) {
 
   if (phase === 'off') {
     return (
-      <div className="sd-off-screen" onClick={handlePowerOn} title="Click anywhere to turn on computer">
-        {/* Subtle CRT scanline overlay */}
-        <div className="sd-crt-overlay" />
+      <div
+        className="sd-screen sd-screen-off"
+        onClick={handlePowerOn}
+        title="Click anywhere to turn on computer"
+      >
+        {/* ── Top Blue Bar ── */}
+        <div className="sd-top-bar" />
 
-        {/* Ambient CRT vignette */}
-        <div className="sd-crt-vignette" />
-
-        {/* Main Center Content */}
-        <div className="sd-off-center">
-          {/* Glowing Vintage Windows Flag */}
+        {/* ── Main Center Content ── */}
+        <div className="sd-center-panel sd-off-panel">
+          {/* Windows XP Flag */}
           <div className="sd-off-logo-wrapper">
             <img
               src="/assets/icons/windows-logo-transparent.png"
@@ -43,7 +63,7 @@ export default function ShutdownScreen({ onPowerOn }) {
             />
           </div>
 
-          {/* Authentic Safe to Turn Off Message */}
+          {/* Safe to Turn Off Message in White */}
           <div className="sd-off-text-block">
             <h1 className="sd-off-headline">It is now safe to turn off your computer.</h1>
             <p className="sd-off-sub">System powered down successfully</p>
@@ -55,20 +75,16 @@ export default function ShutdownScreen({ onPowerOn }) {
             onClick={handlePowerOn}
             title="Press to turn on Windows XP"
           >
-            <span className="sd-power-icon">⏻</span>
+            <PowerIcon />
             <span className="sd-power-label">Turn On Computer</span>
           </button>
 
           <p className="sd-off-click-hint">or click anywhere on screen to power on</p>
         </div>
 
-        {/* CRT Monitor Standby Bezel Bar */}
-        <div className="sd-crt-bezel-bar">
-          <div className="sd-monitor-brand">SYNCMASTER CRT</div>
-          <div className="sd-standby-led-group">
-            <span className="sd-led-label">STANDBY</span>
-            <span className="sd-standby-led" />
-          </div>
+        {/* ── Bottom Bar ── */}
+        <div className="sd-bottom-bar">
+          <p className="sd-copy">Microsoft® Windows® XP Professional</p>
         </div>
       </div>
     )
