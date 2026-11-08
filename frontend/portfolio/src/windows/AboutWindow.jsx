@@ -10,8 +10,11 @@ export default function AboutWindow(props) {
       {...props}
     >
       <div className="win-about">
-        <div className="about-avatar">
-          <img src="/assets/avatar/yash-avatar.png" alt="Yash Panchal" className="about-avatar-img" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentNode.innerText = '👨‍💻'; }} />
+        {/* Spinning ring wraps the circular avatar */}
+        <div className="about-avatar-ring">
+          <div className="about-avatar">
+            <img src="/assets/avatar/yash-avatar.png" alt="Yash Panchal" className="about-avatar-img" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentNode.innerText = '👨‍💻'; }} />
+          </div>
         </div>
         <div className="about-body">
           <h2>Yash Panchal</h2>

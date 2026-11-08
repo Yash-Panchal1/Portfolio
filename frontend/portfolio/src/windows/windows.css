@@ -20,59 +20,61 @@
   font-family: 'Tahoma', Arial, sans-serif;
 }
 
-.about-avatar {
-  font-size: 5rem;
+/* ── Spinning ring (outer wrapper) ── */
+.about-avatar-ring {
   flex-shrink: 0;
-  width: 110px;
-  height: 110px;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Rotating conic gradient ring */
+  background: conic-gradient(
+    from 0deg,
+    #316AC5 0%,
+    #70b0ff 25%,
+    #ffffff 50%,
+    #70b0ff 75%,
+    #316AC5 100%
+  );
+  animation: ring-rotate 2.5s linear infinite;
+}
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Circular avatar (inner) — no motion, fully fills circle ── */
+.about-avatar {
+  font-size: 5rem;
+  flex-shrink: 0;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
   overflow: hidden;
-  position: relative;
-  /* Spinning gradient border ring */
-  padding: 3px;
-  background: linear-gradient(135deg, #316AC5, #60a0ff, #0030a0, #316AC5);
-  background-size: 300% 300%;
-  animation: avatar-ring-spin 3s linear infinite;
-  box-shadow:
-    0 0 0 2px #fff,
-    0 4px 18px rgba(49, 106, 197, 0.55);
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dce8ff;
+  /* Counter-rotate so the avatar face stays perfectly still */
+  animation: ring-counter 2.5s linear infinite;
 }
 
-@keyframes avatar-ring-spin {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Inner circle that clips the image */
-.about-avatar::before {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  background: #fff;
-  z-index: 0;
+@keyframes ring-counter {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
 }
 
 .about-avatar-img {
-  position: relative;
-  z-index: 1;
-  width: calc(100% - 6px);
-  height: calc(100% - 6px);
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center top;
-  /* Subtle floating motion */
-  animation: avatar-float 4s ease-in-out infinite;
-}
-
-@keyframes avatar-float {
-  0%,  100% { transform: translateY(0px) scale(1); }
-  25%        { transform: translateY(-3px) scale(1.02); }
-  75%        { transform: translateY(2px) scale(0.99); }
+  /* Counter the counter-rotation so photo is always upright */
+  animation: ring-rotate 2.5s linear infinite;
 }
 
 .about-body {
@@ -313,9 +315,14 @@
     text-align: center;
   }
 
+  .about-avatar-ring {
+    width: 96px;
+    height: 96px;
+  }
+
   .about-avatar {
-    width: 90px;
-    height: 90px;
+    width: 86px;
+    height: 86px;
   }
 
   .about-skills {
