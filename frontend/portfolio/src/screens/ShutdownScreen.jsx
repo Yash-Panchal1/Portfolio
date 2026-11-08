@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { playShutdown } from '../utils/sound'
+import { playShutdown, playClick } from '../utils/sound'
 import './ShutdownScreen.css'
 
 export default function ShutdownScreen({ onPowerOn }) {
@@ -9,7 +9,7 @@ export default function ShutdownScreen({ onPowerOn }) {
     // Play shutdown chime immediately on mount
     playShutdown()
 
-    // After 3.6s, switch to the black "safe to turn off" screen
+    // After 3.6s, switch to the authentic powered-down screen
     const timer = setTimeout(() => {
       setPhase('off')
     }, 3600)
@@ -17,11 +17,59 @@ export default function ShutdownScreen({ onPowerOn }) {
     return () => clearTimeout(timer)
   }, [])
 
+  const handlePowerOn = (e) => {
+    if (e) e.stopPropagation()
+    playClick()
+    onPowerOn()
+  }
+
   if (phase === 'off') {
     return (
-      <div className="sd-off" onClick={onPowerOn} title="Click anywhere to turn on computer">
-        <p className="sd-safe-text">It is now safe to turn off your computer.</p>
-        <p className="sd-power-hint">[ ⚡ Click anywhere to power on ]</p>
+      <div className="sd-off-screen" onClick={handlePowerOn} title="Click anywhere to turn on computer">
+        {/* Subtle CRT scanline overlay */}
+        <div className="sd-crt-overlay" />
+
+        {/* Ambient CRT vignette */}
+        <div className="sd-crt-vignette" />
+
+        {/* Main Center Content */}
+        <div className="sd-off-center">
+          {/* Glowing Vintage Windows Flag */}
+          <div className="sd-off-logo-wrapper">
+            <img
+              src="/assets/icons/windows-logo-transparent.png"
+              alt="Windows XP"
+              className="sd-off-flag"
+            />
+          </div>
+
+          {/* Authentic Safe to Turn Off Message */}
+          <div className="sd-off-text-block">
+            <h1 className="sd-off-headline">It is now safe to turn off your computer.</h1>
+            <p className="sd-off-sub">System powered down successfully</p>
+          </div>
+
+          {/* Authentic XP Luna Style Power Button */}
+          <button
+            className="sd-xp-power-btn"
+            onClick={handlePowerOn}
+            title="Press to turn on Windows XP"
+          >
+            <span className="sd-power-icon">⏻</span>
+            <span className="sd-power-label">Turn On Computer</span>
+          </button>
+
+          <p className="sd-off-click-hint">or click anywhere on screen to power on</p>
+        </div>
+
+        {/* CRT Monitor Standby Bezel Bar */}
+        <div className="sd-crt-bezel-bar">
+          <div className="sd-monitor-brand">SYNCMASTER CRT</div>
+          <div className="sd-standby-led-group">
+            <span className="sd-led-label">STANDBY</span>
+            <span className="sd-standby-led" />
+          </div>
+        </div>
       </div>
     )
   }
