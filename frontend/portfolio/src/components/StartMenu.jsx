@@ -90,7 +90,7 @@ function RecentIcon() {
   )
 }
 
-export default function StartMenu({ onClose, onOpenWindow, onLogOff }) {
+export default function StartMenu({ onClose, onOpenWindow, onLogOff, onShutdown }) {
   const handleClick = (id) => {
     onOpenWindow(id)
     onClose()
@@ -202,7 +202,7 @@ export default function StartMenu({ onClose, onOpenWindow, onLogOff }) {
           />
           <span>Log Off</span>
         </button>
-        <button className="start-foot-btn" onClick={() => window.location.reload()}>
+        <button className="start-foot-btn" onClick={onShutdown}>
           <img
             src="/assets/icons/shutdown-noborder.png"
             alt="Shut Down"

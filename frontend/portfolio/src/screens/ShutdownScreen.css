@@ -1,0 +1,147 @@
+/* ─── Phase 1: Shutting Down ─────────────────────────────────── */
+.sd-shutting {
+  position: fixed;
+  inset: 0;
+  background: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 9999;
+  user-select: none;
+}
+
+.sd-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.sd-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sd-logo-flag {
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+.sd-logo-text {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.sd-logo-xp {
+  font-style: italic;
+  color: #f4ac20;
+  font-size: 36px;
+  margin-left: 2px;
+}
+
+.sd-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 60px;
+}
+
+.sd-message {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 18px;
+  color: #c8d3e8;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Classic XP-style segmented progress bar */
+.sd-bar-track {
+  width: 200px;
+  height: 16px;
+  background: #0a0f2a;
+  border: 1px solid #3a4a7a;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.sd-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #3c78d8 0px,
+    #3c78d8 10px,
+    transparent 10px,
+    transparent 13px
+  );
+  background-size: 180px 100%;
+  animation: sd-scroll 1s linear infinite;
+}
+
+@keyframes sd-scroll {
+  from { background-position: 0 0; }
+  to   { background-position: 180px 0; }
+}
+
+.sd-bottom {
+  padding-bottom: 40px;
+}
+
+.sd-copy {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: #4a5a8a;
+  text-align: center;
+  margin: 0;
+}
+
+/* ─── Phase 2: Safe to Turn Off ─────────────────────────────── */
+.sd-off {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  z-index: 9999;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sd-safe-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(14px, 2.5vw, 22px);
+  color: #e8a000;
+  letter-spacing: 0.5px;
+  text-align: center;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.sd-power-hint {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(11px, 1.6vw, 15px);
+  color: #664400;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 0;
+  animation: sd-blink 1.6s ease-in-out infinite;
+}
+
+@keyframes sd-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}

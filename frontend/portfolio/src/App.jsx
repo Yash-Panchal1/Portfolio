@@ -3,16 +3,21 @@ import BootScreen from './screens/BootScreen'
 import LoginScreen from './screens/LoginScreen'
 import WelcomeScreen from './screens/WelcomeScreen'
 import DesktopScreen from './screens/DesktopScreen'
+import ShutdownScreen from './screens/ShutdownScreen'
 import { playClick, playLogoff } from './utils/sound'
 import './App.css'
 
-// Screens: boot -> login -> welcome -> desktop
+// Screens: boot -> login -> welcome -> desktop -> shutdown -> boot
 export default function App() {
   const [screen, setScreen] = useState('boot')
 
   const handleLogOff = () => {
     playLogoff()
     setScreen('login')
+  }
+
+  const handleShutdown = () => {
+    setScreen('shutdown')
   }
 
   useEffect(() => {
@@ -35,10 +40,11 @@ export default function App() {
 
   return (
     <div className="app-root">
-      {screen === 'boot'    && <BootScreen    onDone={() => setScreen('login')} />}
-      {screen === 'login'   && <LoginScreen   onLogin={() => setScreen('welcome')} />}
-      {screen === 'welcome' && <WelcomeScreen onDone={() => setScreen('desktop')} />}
-      {screen === 'desktop' && <DesktopScreen onLogOff={handleLogOff} />}
+      {screen === 'boot'     && <BootScreen     onDone={() => setScreen('login')} />}
+      {screen === 'login'    && <LoginScreen    onLogin={() => setScreen('welcome')} />}
+      {screen === 'welcome'  && <WelcomeScreen  onDone={() => setScreen('desktop')} />}
+      {screen === 'desktop'  && <DesktopScreen  onLogOff={handleLogOff} onShutdown={handleShutdown} />}
+      {screen === 'shutdown' && <ShutdownScreen onPowerOn={() => setScreen('boot')} />}
     </div>
   )
 }

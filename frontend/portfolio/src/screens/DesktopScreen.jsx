@@ -26,7 +26,7 @@ const allApps = [
   { id: 'pinball',  label: '3D Pinball',  iconComp: PinballIcon,   component: PinballWindow },
 ]
 
-export default function DesktopScreen({ onLogOff }) {
+export default function DesktopScreen({ onLogOff, onShutdown }) {
   const [openWindows, setOpenWindows] = useState([])
   const [activeWindow, setActiveWindow] = useState(null)
   const [showNotif, setShowNotif] = useState(true)
@@ -195,6 +195,7 @@ export default function DesktopScreen({ onLogOff }) {
             onClose={() => setStartOpen(false)}
             onOpenWindow={openWindow}
             onLogOff={() => { setStartOpen(false); setShowLogOff(true) }}
+            onShutdown={() => { setStartOpen(false); onShutdown() }}
           />
         </>
       )}
