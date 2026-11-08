@@ -84,7 +84,7 @@ export default function ShutdownScreen({ onPowerOn }) {
 
         {/* ── Bottom Bar ── */}
         <div className="sd-bottom-bar">
-          <p className="sd-copy">Microsoft® Windows® XP Professional</p>
+          <p className="sd-copy">Yash XP Professional</p>
         </div>
       </div>
     )
@@ -131,7 +131,7 @@ export default function ShutdownScreen({ onPowerOn }) {
 
       {/* ── Bottom Bar ── */}
       <div className="sd-bottom-bar">
-        <p className="sd-copy">Microsoft® Windows® XP Professional</p>
+        <p className="sd-copy">Yash XP Professional</p>
       </div>
     </div>
   )
