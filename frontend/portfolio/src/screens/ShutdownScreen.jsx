@@ -105,17 +105,17 @@ export default function ShutdownScreen({ onPowerOn }) {
         <div className="sd-logo-lockup">
           <img
             src="/assets/icons/windows-logo-transparent.png"
-            alt="Windows XP"
+            alt="Yash XP"
             className="sd-win-logo"
           />
           <div className="sd-brand-text">
-            <span className="sd-brand-name">Windows</span>
+            <span className="sd-brand-name">Yash</span>
             <span className="sd-brand-xp">xp</span>
           </div>
         </div>
 
         {/* Shutdown status message */}
-        <p className="sd-status-message">Windows is shutting down...</p>
+        <p className="sd-status-message">Portfolio is shutting down...</p>
 
         {/* Progress track with moving 3-dot runner (exact same as boot screen) */}
         <div className="sd-progress-wrap">
