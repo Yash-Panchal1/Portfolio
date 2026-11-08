@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import XPWindow from './XPWindow'
 import './ContactWindow.css'
 
@@ -6,6 +6,13 @@ export default function ContactWindow(props) {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [status, setStatus] = useState(null) // null | 'sending' | 'ok' | 'err'
   const [statusMsg, setStatusMsg] = useState('')
+
+  const apiBase = (import.meta.env.VITE_API_BASE || 'https://portfolio-7isj.onrender.com').replace(/\/+$/, '')
+
+  // Pre-warm backend when window is opened so it's ready before user finishes typing
+  useEffect(() => {
+    fetch(`${apiBase}/health`, { mode: 'cors' }).catch(() => {})
+  }, [apiBase])
 
   const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
@@ -34,27 +41,52 @@ export default function ContactWindow(props) {
       message: form.message.trim(),
     }
 
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE || 'https://portfolio-7isj.onrender.com').replace(/\/+$/, '')
-      const res = await fetch(`${apiBase}/api/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(submission),
-      })
-      const data = await res.json().catch(() => ({}))
+    const sendWithRetry = async (attempt = 1) => {
+      try {
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 35000)
 
-      if (res.ok) {
-        setStatus('ok')
-        setStatusMsg('Message sent successfully!')
-        setForm({ name: '', email: '', subject: '', message: '' })
-      } else {
-        setStatus('err')
-        setStatusMsg(data.message || 'Failed to send message.')
+        if (attempt > 1) {
+          setStatusMsg('Connecting to server, delivering...')
+        }
+
+        const res = await fetch(`${apiBase}/api/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submission),
+          signal: controller.signal,
+        })
+        clearTimeout(timeoutId)
+
+        const data = await res.json().catch(() => ({}))
+
+        if (res.ok) {
+          setStatus('ok')
+          setStatusMsg('Message delivered successfully!')
+          setForm({ name: '', email: '', subject: '', message: '' })
+          return true
+        } else if (attempt === 1) {
+          await new Promise(r => setTimeout(r, 2000))
+          return await sendWithRetry(2)
+        } else {
+          setStatus('err')
+          setStatusMsg(data.message || 'Failed to send message.')
+          return false
+        }
+      } catch {
+        if (attempt === 1) {
+          setStatusMsg('Waking cloud server (takes a few seconds)...')
+          await new Promise(r => setTimeout(r, 3000))
+          return await sendWithRetry(2)
+        } else {
+          setStatus('err')
+          setStatusMsg('Server connection delayed. Click below to email directly.')
+          return false
+        }
       }
-    } catch {
-      setStatus('err')
-      setStatusMsg('Network error. Is the server running?')
     }
+
+    await sendWithRetry(1)
   }
 
   return (

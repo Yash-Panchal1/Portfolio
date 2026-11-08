@@ -21,9 +21,14 @@ import notfound from "./middlewares/notFoundMiddleware.js";
 import errorHandler from './middlewares/errorMiddleware.js';
 
 
- // http://localhost:8000/
- app.use('/api/projects',ProjectRoutes)
- app.use('/api/contact',ContactRoutes)
+// Health & Uptime ping endpoint (for 24/7 keep-alive and pre-warming)
+app.get(['/', '/health', '/api/health'], (req, res) => {
+  res.status(200).json({ status: 'ok', uptime: process.uptime(), timestamp: new Date().toISOString() });
+});
+
+// http://localhost:8000/
+app.use('/api/projects', ProjectRoutes)
+app.use('/api/contact', ContactRoutes)
 
  app.use(notfound)
  app.use(errorHandler)

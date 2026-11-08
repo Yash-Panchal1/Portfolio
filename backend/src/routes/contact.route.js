@@ -14,6 +14,9 @@ const contactLimiter = rateLimit({
   message: { success: false, statusCode: 429, message: 'Too many messages. Try again later.' },
 });
 
+// Public ping check
+router.get('/ping', (req, res) => res.status(200).json({ status: 'ok' }));
+
 // /api/contact
 router
   .route('/')

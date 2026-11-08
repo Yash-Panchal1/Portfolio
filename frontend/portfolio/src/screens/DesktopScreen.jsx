@@ -36,11 +36,15 @@ export default function DesktopScreen({ onLogOff }) {
   const [ctxMenu, setCtxMenu] = useState(null) // { x, y } or null
   const [showLogOff, setShowLogOff] = useState(false)
 
-  // Play XP startup sound on mount
+  // Play XP startup sound & pre-warm backend so contact service is ready 24/7
   useEffect(() => {
     const audio = new Audio('/assets/audio/startup.mp3')
     audio.volume = 0.5
     audio.play().catch(() => {})
+
+    // Background pre-warm for Render backend
+    const apiBase = (import.meta.env.VITE_API_BASE || 'https://portfolio-7isj.onrender.com').replace(/\/+$/, '')
+    fetch(`${apiBase}/health`, { mode: 'cors' }).catch(() => {})
   }, [])
 
   // Sorted icons
