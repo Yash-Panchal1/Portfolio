@@ -9,17 +9,17 @@ export default function ShutdownScreen({ onPowerOn }) {
     // Play shutdown chime immediately on mount
     playShutdown()
 
-    // After 3s, switch to the black "safe to turn off" screen
+    // After 3.6s, switch to the black "safe to turn off" screen
     const timer = setTimeout(() => {
       setPhase('off')
-    }, 3000)
+    }, 3600)
 
     return () => clearTimeout(timer)
   }, [])
 
   if (phase === 'off') {
     return (
-      <div className="sd-off" onClick={onPowerOn}>
+      <div className="sd-off" onClick={onPowerOn} title="Click anywhere to turn on computer">
         <p className="sd-safe-text">It is now safe to turn off your computer.</p>
         <p className="sd-power-hint">[ ⚡ Click anywhere to power on ]</p>
       </div>
@@ -27,32 +27,47 @@ export default function ShutdownScreen({ onPowerOn }) {
   }
 
   return (
-    <div className="sd-shutting">
-      {/* Top Windows logo area */}
-      <div className="sd-top">
-        <div className="sd-logo">
-          <span className="sd-logo-flag">
-            <span style={{ color: '#e74c3c' }}>■</span>
-            <span style={{ color: '#27ae60' }}>■</span>
-            <br />
-            <span style={{ color: '#3498db' }}>■</span>
-            <span style={{ color: '#f39c12' }}>■</span>
-          </span>
-          <span className="sd-logo-text">Windows<span className="sd-logo-xp">XP</span></span>
+    <div
+      className="sd-screen"
+      onClick={() => setPhase('off')}
+      title="Click to skip"
+    >
+      {/* ── Top Blue Bar ── */}
+      <div className="sd-top-bar" />
+
+      {/* ── Center Content ── */}
+      <div className="sd-center-panel">
+        {/* Real Windows XP Logo */}
+        <div className="sd-logo-lockup">
+          <img
+            src="/assets/icons/windows-logo-transparent.png"
+            alt="Windows XP"
+            className="sd-win-logo"
+          />
+          <div className="sd-brand-text">
+            <span className="sd-brand-name">Windows</span>
+            <span className="sd-brand-xp">xp</span>
+          </div>
+        </div>
+
+        {/* Shutdown status message */}
+        <p className="sd-status-message">Windows is shutting down...</p>
+
+        {/* Progress track with moving 3-dot runner (exact same as boot screen) */}
+        <div className="sd-progress-wrap">
+          <div className="sd-progress-track">
+            <div className="sd-dots-runner">
+              <span className="sd-bdot"></span>
+              <span className="sd-bdot"></span>
+              <span className="sd-bdot"></span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Center content */}
-      <div className="sd-center">
-        <p className="sd-message">Windows is shutting down...</p>
-        <div className="sd-bar-track">
-          <div className="sd-bar-fill" />
-        </div>
-      </div>
-
-      {/* Bottom copyright */}
-      <div className="sd-bottom">
-        <p className="sd-copy">Copyright © Microsoft Corporation</p>
+      {/* ── Bottom Bar ── */}
+      <div className="sd-bottom-bar">
+        <p className="sd-copy">Microsoft® Windows® XP Professional</p>
       </div>
     </div>
   )
