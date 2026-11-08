@@ -23,21 +23,56 @@
 .about-avatar {
   font-size: 5rem;
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #dce8ff, #b0d0ff);
   border-radius: 50%;
-  border: 3px solid #316AC5;
   overflow: hidden;
+  position: relative;
+  /* Spinning gradient border ring */
+  padding: 3px;
+  background: linear-gradient(135deg, #316AC5, #60a0ff, #0030a0, #316AC5);
+  background-size: 300% 300%;
+  animation: avatar-ring-spin 3s linear infinite;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 4px 18px rgba(49, 106, 197, 0.55);
+}
+
+@keyframes avatar-ring-spin {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Inner circle that clips the image */
+.about-avatar::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 0;
 }
 
 .about-avatar-img {
-  width: 100%;
-  height: 100%;
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  border-radius: 50%;
   object-fit: cover;
+  object-position: center top;
+  /* Subtle floating motion */
+  animation: avatar-float 4s ease-in-out infinite;
+}
+
+@keyframes avatar-float {
+  0%,  100% { transform: translateY(0px) scale(1); }
+  25%        { transform: translateY(-3px) scale(1.02); }
+  75%        { transform: translateY(2px) scale(0.99); }
 }
 
 .about-body {
@@ -279,8 +314,8 @@
   }
 
   .about-avatar {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
   }
 
   .about-skills {
