@@ -1,15 +1,9 @@
 import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
 export const sendNotificationEmail = async ({ name, email, subject, message }) => {
   const apiKey = process.env.RESEND_API_KEY;
   const recipient = process.env.EMAIL_USER || 'yk6255713@gmail.com';
-
-  if (!apiKey) {
-    console.warn('⚠️ RESEND_API_KEY is not set in environment.');
-    return;
-  }
-
-  const resend = new Resend(apiKey);
 
   const html = `
     <div style="font-family: Arial, sans-serif; background-color: #f4f6f9; padding: 20px;">
@@ -46,20 +40,53 @@ export const sendNotificationEmail = async ({ name, email, subject, message }) =
     </div>
   `;
 
-  // Resend delivers over HTTPS (Port 443) — never blocked by Render or cloud firewalls!
-  const data = await resend.emails.send({
-    from: 'Portfolio Contact <onboarding@resend.dev>',
-    to: recipient,
-    replyTo: email,
-    subject: `[Portfolio Message] ${subject || 'New message from ' + name}`,
-    html: html
-  });
+  // 1. Try Resend via HTTPS (Port 443) — primary delivery method for cloud hosting
+  if (apiKey) {
+    try {
+      const resend = new Resend(apiKey);
+      const data = await resend.emails.send({
+        from: 'Portfolio Contact <onboarding@resend.dev>',
+        to: recipient,
+        replyTo: email,
+        subject: `[Portfolio Message] ${subject || 'New message from ' + name}`,
+        html: html
+      });
 
-  if (data.error) {
-    console.error('❌ Resend API Error:', data.error);
-    throw new Error(data.error.message);
+      if (!data.error) {
+        console.log('✅ Email delivered successfully via Resend. ID:', data.data?.id);
+        return data;
+      }
+      console.warn('⚠️ Resend returned error, trying fallback:', data.error.message);
+    } catch (resendErr) {
+      console.warn('⚠️ Resend delivery failed, falling back to Nodemailer:', resendErr.message);
+    }
   }
 
-  console.log('✅ Email delivered successfully via Resend. ID:', data.data?.id);
-  return data;
+  // 2. Fallback: Nodemailer SMTP
+  const emailPass = process.env.EMAIL_PASS;
+  if (recipient && emailPass) {
+    try {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: recipient,
+          pass: emailPass
+        }
+      });
+
+      const info = await transporter.sendMail({
+        from: `"${name}" <${recipient}>`,
+        replyTo: email,
+        to: recipient,
+        subject: `[Portfolio Contact] ${subject || 'Message from ' + name}`,
+        html: html
+      });
+
+      console.log('✅ Email delivered successfully via Gmail SMTP fallback. ID:', info.messageId);
+      return info;
+    } catch (smtpErr) {
+      console.error('❌ SMTP fallback error:', smtpErr.message);
+      throw smtpErr;
+    }
+  }
 };

@@ -10,10 +10,22 @@ export default function AboutWindow(props) {
       {...props}
     >
       <div className="win-about">
-        {/* Spinning ring wraps the circular avatar */}
-        <div className="about-avatar-ring">
-          <div className="about-avatar">
-            <img src="/assets/avatar/yash-avatar.png" alt="Yash Panchal" className="about-avatar-img" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentNode.innerText = '👨‍💻'; }} />
+        {/* Circular Avatar with Animated Drifting Clouds behind Yash */}
+        <div className="about-avatar-container">
+          <div className="about-avatar-sky">
+            {/* Animated Background Clouds */}
+            <div className="avatar-clouds-layer">
+              <span className="avatar-cloud c1"></span>
+              <span className="avatar-cloud c2"></span>
+              <span className="avatar-cloud c3"></span>
+            </div>
+            {/* Yash in Foreground — completely still, no square border! */}
+            <img
+              src="/assets/avatar/yash-avatar-transparent.png"
+              alt="Yash Panchal"
+              className="about-avatar-img"
+              onError={(e) => { e.currentTarget.src = '/assets/avatar/yash-avatar-cropped.png'; }}
+            />
           </div>
         </div>
         <div className="about-body">
